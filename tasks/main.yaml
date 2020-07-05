@@ -100,6 +100,14 @@
   tags:
     - docker_service
 
+- name: Install Docker Compose
+  get_url:
+    url: "{{ docker_compose_url }}"
+    dest: /usr/local/bin/docker-compose
+    mode: 0755
+  when: >
+    docker_compose_install == true
+
 - name: Install Ansible dependecies for Docker
   package:
     name: "{{ item }}"

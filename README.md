@@ -93,11 +93,26 @@ docker_default_file: /etc/default/docker
 # Docker default config (see Examples in README for details)
 docker_default_config: {}
 
+# Docker conf dir path and attributes
+docker_daemon_dir: /etc/docker
+docker_daemon_dir_owner: root
+docker_daemon_dir_group: root
+docker_daemon_dir_mode: "0700"
+
 # Location of the Docker daemon config file
-docker_daemon_file: /etc/docker/daemon.json
+docker_daemon_file: "{{ docker_daemon_dir }}/daemon.json"
 
 # Docker daemon config (see Examples in README for details)
 docker_daemon_config: {}
+
+# Whether to install docker-compose
+docker_compose_install: no
+
+# Docker-compose version
+docker_compose_version: 1.26.1
+
+# Docker-compose URL
+docker_compose_url: https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-{{ ansible_system }}-{{ ansible_architecture }}
 
 # Whether to install the Asible dependencies for Docker
 docker_install_deps: no
